@@ -1,0 +1,58 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: build-wasm
+    image: drailing/godot-export-container
+    commands:
+      - mkdir -p ./out/web
+      - Godot_v3.2.3-stable_linux_headless.64 project.godot --export "HTML5" ./out/web/plenum.html
+      - cd ./out/web
+      - cp plenum.html index.html
+    when:
+      branch: [master]
+
+  - name: build-brickserver
+    image: drailing/go_packr_zip
+    environment:
+      GO111MODULE: "on"
+    commands:
+      - cd brickserver
+      - GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -a -o brickserver
+
+  - name: dockerize-brickserver
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: dreiling/inovex-plenum-brickserver
+      tags: latest
+      force_tag: true
+      dockerfile: brickserver/Dockerfile
+      context: brickserver
+    when:
+      branch: [master]
+
+  - name: prepare-rt
+    image: drailing/godot-export-container
+    commands:
+      - cp /bin/Godot_v3.2.3-stable_linux_headless.64 ./realtime-server
+    when:
+      branch: [master]
+
+  - name: dockerize-rt
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: dreiling/inovex-plenum-rt
+      tags: latest
+      force_tag: true
+      dockerfile: realtime-server/Dockerfile
+      context: realtime-server
+    when:
+      branch: [master]

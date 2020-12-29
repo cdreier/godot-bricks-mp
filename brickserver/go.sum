@@ -1,0 +1,8 @@
+github.com/go-chi/chi v1.0.0 h1:s/kv1cTXfivYjdKJdyUzNGyAWZ/2t7duW1gKn5ivu+c=
+github.com/go-chi/chi v4.1.2+incompatible h1:fGFk2Gmi/YKXk0OmGfBh0WgmN3XB8lVnEyNz34tQRec=
+github.com/go-chi/chi v4.1.2+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
+github.com/timshannon/bolthold v0.0.0-20200817130212-4a25ab140645 h1:fbG8rLkRTpKD2rWD/vtQ6ceXZcnDglJssBieaPvieHw=
+github.com/timshannon/bolthold v0.0.0-20200817130212-4a25ab140645/go.mod h1:jUigdmrbdCxcIDEFrq82t4X9805XZfwFZoYUap0ET/U=
+go.etcd.io/bbolt v1.3.5 h1:XAzx9gjCb0Rxj7EoqcClPD1d5ZBxZJk0jbuoPHenBt0=
+go.etcd.io/bbolt v1.3.5/go.mod h1:G5EMThwa9y8QZGBClrRx5EY+Yw9kAhnjy3bSjsnlVTQ=
+golang.org/x/sys v0.0.0-20200202164722-d101bd2416d5/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
