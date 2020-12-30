@@ -15,11 +15,11 @@ After learning in [DinoPoker](https://github.com/cdreier/DinoPoker) that a posit
 
 ## controls
 
-WASD  - movement
-E     - drop a brick
-Q     - toggle camera
-SPACE - jump
-Click - delete brick
+WASD  - movement  
+E     - drop a brick  
+Q     - toggle camera  
+SPACE - jump  
+Click - delete brick  
 
 ![basics](https://github.com/cdreier/godot-bricks-mp/blob/master/demo_gifs/godot-bricks-basics.gif?raw=true)
 
