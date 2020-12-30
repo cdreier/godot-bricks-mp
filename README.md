@@ -10,7 +10,7 @@ The bricks are persisted with a Go Server in a [boltdb](https://github.com/boltd
 
 most of the network code are in the [Connection](https://github.com/cdreier/godot-bricks-mp/blob/master/Connection.gd) [files](https://github.com/cdreier/godot-bricks-mp/blob/master/realtime-server/Connection.gd). The important part is, to set the websocket client and server as network_peer to get everything working with Godots [high level multiplayer API](https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html)
 
-After learning in [DinoPoker](https://github.com/cdreier/DinoPoker) that a position sync on every frame is working and looks smooth (but kills the small server with a few players), i tested to interpolte the positions [with a timer only 10 times per second](https://github.com/cdreier/godot-bricks-mp/blob/master/Player.gd#L24). Perhaps this can be done a bit more clever?
+After learning in [DinoPoker](https://github.com/cdreier/DinoPoker) that a position sync on every frame is working and looks smooth (but kills a small server with a few players), i tested to interpolte the positions [with a timer only 10 times per second](https://github.com/cdreier/godot-bricks-mp/blob/master/Player.gd#L24). Perhaps this can be done a bit more clever?
 
 
 ## controls
@@ -20,8 +20,11 @@ E     - drop a brick
 Q     - toggle camera  
 SPACE - jump  
 Click - delete brick  
+Colorpicker... pick colors
 
 ![basics](https://github.com/cdreier/godot-bricks-mp/blob/master/demo_gifs/godot-bricks-basics.gif?raw=true)
+
+With the on/off toggle on the bottom right corner, you can toggle a grid movement where you only move in half-brick steps, so you can better control the position and build acutally something that is more than a big colored pile ;)
 
 ## offline
 
