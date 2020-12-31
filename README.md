@@ -2,7 +2,7 @@
 
 for our `winterplenum` at inovex, i created this small example for Godot Multiplayer in the browser with websockets.
 
-The bricks are persisted with a Go Server in a [boltdb](https://github.com/boltdb/bolt) via [bolthold](https://github.com/timshannon/bolthold) - and additionally alle events in a second db, so you can replay all the brick-events and watch some timelaps :)
+The bricks are persisted with a [Go Server](https://github.com/cdreier/godot-bricks-mp/tree/master/brickserver) in a [boltdb](https://github.com/boltdb/bolt) via [bolthold](https://github.com/timshannon/bolthold) - and additionally alle events in a second db, so you can replay all the brick-events and watch some timelaps :)
 
 ![timelaps](https://github.com/cdreier/godot-bricks-mp/blob/master/demo_gifs/plenum-demo.gif?raw=true)
 
