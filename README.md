@@ -1,19 +1,25 @@
 # Godot Bricks Multiplayer
 
-for our `winterplenum` at inovex, i created this small example for Godot Multiplayer in the browser with websockets.
+For our `winterplenum` at inovex, i created this small example for a dedicated Godot Multiplayer server in the browser with websockets.
 
-The bricks are persisted with a [Go Server](https://github.com/cdreier/godot-bricks-mp/tree/master/brickserver) in a [boltdb](https://github.com/boltdb/bolt) via [bolthold](https://github.com/timshannon/bolthold) - and additionally alle events in a second db, so you can replay all the brick-events and watch some timelaps :)
+There are 3 projects
+
+* The main game at the root of this repository
+* The [realtime-server](https://github.com/cdreier/godot-bricks-mp/tree/master/realtime-server), a second Godot project for the dedicated websocket server
+* The [brickserver](https://github.com/cdreier/godot-bricks-mp/tree/master/brickserver), written in go for a lightweight persistence and event storage
+
+This go server uses a [boltdb](https://github.com/boltdb/bolt) via [bolthold](https://github.com/timshannon/bolthold) - to persist the current world and additionally persists all events in a second db, so you can replay all the brick-events and watch some timelaps :)
 
 ![timelaps](https://github.com/cdreier/godot-bricks-mp/blob/master/demo_gifs/plenum-demo.gif?raw=true)
 
-## code!
+## Code!
 
-most of the network code are in the [Connection](https://github.com/cdreier/godot-bricks-mp/blob/master/Connection.gd) [files](https://github.com/cdreier/godot-bricks-mp/blob/master/realtime-server/Connection.gd). The important part is, to set the websocket client and server as network_peer to get everything working with Godots [high level multiplayer API](https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html)
+Most of the network code are in the [Connection](https://github.com/cdreier/godot-bricks-mp/blob/master/Connection.gd) [files](https://github.com/cdreier/godot-bricks-mp/blob/master/realtime-server/Connection.gd). The important part is, to set the websocket client and server as network_peer to get everything working with Godots [high level multiplayer API](https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html)
 
 After learning in [DinoPoker](https://github.com/cdreier/DinoPoker) that a position sync on every frame is working and looks smooth (but kills a small server with a few players), i tested to interpolte the positions [with a timer only 10 times per second](https://github.com/cdreier/godot-bricks-mp/blob/master/Player.gd#L24). Perhaps this can be done a bit more clever?
 
 
-## controls
+## Controls
 
 WASD  - movement  
 E     - drop a brick  
@@ -26,7 +32,7 @@ Colorpicker... pick colors
 
 With the on/off toggle on the bottom right corner, you can toggle a grid movement where you only move in half-brick steps, so you can better control the position and build acutally something that is more than a big colored pile ;)
 
-## offline
+## Offline
 
 to just test it, there is an offline, non-persistent version, startng when no servers are found to communicate with. 
 
