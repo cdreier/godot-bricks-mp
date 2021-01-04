@@ -34,7 +34,7 @@ With the on/off toggle on the bottom right corner, you can toggle a grid movemen
 
 ## Offline
 
-to just test it, there is an offline, non-persistent version, startng when no servers are found to communicate with. 
+to just test it, there is an offline, non-persistent version, starting when no servers are found to communicate with. 
 
 ## Deployment
 
