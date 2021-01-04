@@ -36,39 +36,42 @@ With the on/off toggle on the bottom right corner, you can toggle a grid movemen
 
 to just test it, there is an offline, non-persistent version, startng when no servers are found to communicate with. 
 
-## WIP: deploy
+## Deployment
 
-not yet dockerized...
+i put together a simple docker-compose file ( also found in https://github.com/cdreier/godot-bricks-mp/tree/master/docker )
+
+just do a HTML5 export into the `docker/export` folder and run `docker-compose up`
+
+after everything is up, you can test it at http://localhost:8000/?server=ws://localhost:8001
 
 ```yaml
-version: '3.2'
+version: "3.2"
 
 services:
-
   server:
     image: drailing/godot-bricks-mp-rt:latest
-    networks: 
-      - traefik-overlay
+    ports:
+      - 8001:5000
+    networks:
       - storage-net
     environment:
       - BRICK_SERVER=http://brickserver:8080
-        
+
   brickserver:
     image: drailing/godot-bricks-mp-brickserver:latest
     volumes:
-      - brickserver-data:/app/data
-    networks: 
+      - ./data:/app/data
+    networks:
       - storage-net
 
   web:
-    image: this-is-up-to-you
+    image: drailing/static_file_server:latest
+    ports:
+      - 8000:80
+    volumes:
+      - ./export:/www
 
-networks: 
-  traefik-overlay:
-    external: true
+networks:
   storage-net:
-  
-volumes:
-  brickserver-data:
-    external: true
+
 ```

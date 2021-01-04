@@ -1,0 +1,28 @@
+version: "3.2"
+
+services:
+  server:
+    image: drailing/godot-bricks-mp-rt:latest
+    ports:
+      - 8001:5000
+    networks:
+      - storage-net
+    environment:
+      - BRICK_SERVER=http://brickserver:8080
+
+  brickserver:
+    image: drailing/godot-bricks-mp-brickserver:latest
+    volumes:
+      - ./data:/app/data
+    networks:
+      - storage-net
+
+  web:
+    image: drailing/static_file_server:latest
+    ports:
+      - 8000:80
+    volumes:
+      - ./export:/www
+
+networks:
+  storage-net:
